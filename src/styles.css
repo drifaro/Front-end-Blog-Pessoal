@@ -3,3 +3,17 @@
 html{
     scroll-behavior: smooth;
 }
+.fs-54{
+    font-size: 54pt;
+}
+
+.fs-18{
+    font-size: 18 pt;
+}
+.bg {
+    background-color: lavender;
+}
+
+.txt{
+    color: #008b8b;
+}
