@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserLogin } from '../model/UserLogin';
@@ -20,7 +20,7 @@ export class AuthService {
   }
 
   cadastrar(user: Usuario): Observable<Usuario>{
-    return this.http.post<Usuario>('https://driblog.herokuapp.com/usuarios/cadastrar', Usuario)
+    return this.http.post<Usuario>('https://driblog.herokuapp.com/usuarios/cadastrar', user)
 
   }
 }
