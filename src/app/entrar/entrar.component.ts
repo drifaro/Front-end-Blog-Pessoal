@@ -28,16 +28,16 @@ export class EntrarComponent implements OnInit {
       this.userLogin = resp
 
       environment.token = this.userLogin.token
-      environment.token = this.userLogin.nome
+      environment.nome = this.userLogin.nome
       environment.foto = this.userLogin.foto
       environment.id = this.userLogin.id
-      environment.usuario = this.userLogin.usuario
+    
 
       console.log(environment.token)
       console.log(environment.nome)
       console.log(environment.foto)
       console.log(environment.id)
-      console.log(environment.usuario)
+     
 
       this.router.navigate(['/inicio'])
     }, erro => {
