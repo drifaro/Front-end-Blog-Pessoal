@@ -5,3 +5,11 @@
 .tl{
     background-color:  darkcyan;
 }
+
+.hb:hover{
+    background-color: cornflowerblue;
+}
+
+.hr:hover{
+    background-color: crimson;
+}
