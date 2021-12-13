@@ -25,6 +25,10 @@ export class AuthService {
 
   }
 
+  getByIdUsuario(idUsuario: number): Observable<Usuario>{
+    return this.http.get<Usuario>(`https://driblog.herokuapp.com/usuarios/${idUsuario}`)
+  }
+
   logado(){
     let ok = false
 

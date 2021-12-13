@@ -2,6 +2,16 @@
     color: darkcyan;
 }
 
+.bg{
+    background-color: lavender;
+}
+.hb:hover{
+    color: cornflowerblue;
+}
+
+.hr:hover{
+    color: crimson;
+}
 
 
 
