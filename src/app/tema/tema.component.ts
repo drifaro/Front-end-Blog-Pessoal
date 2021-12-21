@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import { Tema } from '../model/Tema';
+import { AlertasService } from '../service/alertas.service';
 import { AuthService } from '../service/auth.service';
 import { TemaService } from '../service/tema.service';
 
@@ -17,7 +18,8 @@ export class TemaComponent implements OnInit {
 
   constructor(    
     private temaService: TemaService,
-    private router: Router
+    private router: Router,
+    private alerta: AlertasService
 
   ) { }
 
@@ -26,6 +28,12 @@ export class TemaComponent implements OnInit {
     if(environment.token == ''){
       this.router.navigate(['/entrar'])
     }
+
+    if(environment.tipo != 'adm'){
+      this.alerta.showAlertInfo("Você precisar ser administrador para acessar essa página!")
+      this.router.navigate(['/inicio'])
+    }
+
     this.findAllTemas()
   }
 
@@ -38,7 +46,7 @@ export class TemaComponent implements OnInit {
   cadastroTema() {
     this.temaService.postTema(this.tema).subscribe((resp: Tema)=> {
       this.tema = resp      
-      alert('Tema cadastrado com sucesso!')
+      this.alerta.showAlertSuccess('Tema cadastrado com sucesso!')
       this.findAllTemas()
       this.tema = new Tema()
     })

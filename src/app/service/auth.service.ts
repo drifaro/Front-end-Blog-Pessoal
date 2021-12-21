@@ -12,6 +12,10 @@ import { Usuario } from '../model/Usuario';
 })
 export class AuthService {
 
+  token = {
+    headers: new HttpHeaders().set('Authorization', environment.token)
+  }
+
   constructor(
     private http: HttpClient
   ) { }
@@ -29,6 +33,10 @@ export class AuthService {
     return this.http.get<Usuario>(`https://driblog.herokuapp.com/usuarios/${idUsuario}`)
   }
 
+  putUsuario(user: Usuario): Observable<Usuario> {
+    return this.http.put<Usuario>('https://driblog.herokuapp.com/usuarios/atualizar', user)
+  }
+
   logado(){
     let ok = false
 
@@ -38,5 +46,15 @@ export class AuthService {
         
     return ok
   }
+
+  adm(){
+    let ok = false
+
+    if(environment.tipo == 'adm'){
+      ok = true
+    }
+    return ok
+  }
+
 }
 

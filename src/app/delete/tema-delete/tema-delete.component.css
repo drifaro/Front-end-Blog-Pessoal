@@ -2,17 +2,34 @@
     color: darkcyan;
 }
 
-.tl{
-    background-color:  darkcyan;
+.bg{
+    background-color: lavender;
 }
 
 .hb:hover{
     background-color: cornflowerblue;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
 }
 
 .hr:hover{
     background-color: crimson;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
 }
+
+  .btn {
+    box-sizing: border-box;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+  }
+
+.linha{
+    padding: 20px;
+    background-color: lavenderblush;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+  }
 
 .txt-2{
     color: rgb(120, 8, 168);

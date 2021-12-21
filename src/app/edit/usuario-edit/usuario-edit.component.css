@@ -1,20 +1,14 @@
-#img-bg{
-    background-image: url('https://i.imgur.com/mwxbhMr.png');
-
-    min-height: 930px;    
-    
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100%; 
-}
-
-.container-fluid{
+.bg{
     background-color: lavender;
-    
+}
+.f-30{
+    font-size: 30pt;
+    color: darkcyan;
 }
 
 .ft{
     color: darkcyan;
+    font-size: 12pt;
 }
 
 .linha{
@@ -26,20 +20,19 @@
   }
 
   .hb:hover{
-    background-color: darkcyan;
+    background-color: cornflowerblue;
     color: #ffffff ;
-    box-sizing: border-box;
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
   }
+  
+  .hr:hover{
+    background-color: crimson;
+    color: #ffffff;
+  }
+  
 
   .borda{
     border: 1px solid darkcyan;
     background-color: #ffffff;
-    box-sizing: border-box;
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
-  }
-
-  .btn {
     box-sizing: border-box;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
   }

@@ -10,8 +10,8 @@ import { environment } from 'src/environments/environment.prod';
 export class MenuComponent implements OnInit {
 
   foto = environment.foto  
-  nome = environment.nome 
-  
+  nome = environment.nome
+  idUsuario = environment.id;  
 
 
   constructor(

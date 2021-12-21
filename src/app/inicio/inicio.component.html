@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid linha">
 
     <div class="row bg align-items-center">
         <div class="col-md-6">
@@ -62,8 +62,18 @@
         <div class="tab-pane fade show active" id="todasPostagens" role="tabpanel"
             aria-labelledby="nav-todasPostagens-tab">
 
+            
+            <div class="row d-flex justify-content-center mt-5 mb5">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" class="form-control borda" id="titulo" placeholder="Digite um titulo de postagem para pesquisar" [(ngModel)]="tituloPost" (keyup)="findByTituloPostagem()">
+                    </div>
+                </div>
+
+            </div>
+
             <div class="card-columns">
-                <div class="card text-center" *ngFor="let item of listaPostagens">
+                <div class="card text-center" *ngFor="let item of listaPostagens | orderBy : key : reverse">
                     <div class="card-body">
                         <h5 class="card-title m-0">{{item.titulo}}</h5>
                         <small class="text-muted">Tema: {{item.tema.descricao}}</small>
@@ -80,7 +90,7 @@
         <div class="tab-pane fade" id="minhasPostagens" role="tabpanel" aria-labelledby="nav-minhasPostagens-tab">
 
             <div class="card-columns">
-                <div class="card text-center" *ngFor="let item of usuario.postagem">
+                <div class="card text-center" *ngFor="let item of usuario.postagem  | orderBy : key : reverse">
                     <div class="card-body">
                         <h5 class="card-title m-0">{{item.titulo}}</h5>
                         <small class="text-muted">Tema: {{item.tema.descricao}}</small>
@@ -104,10 +114,18 @@
 
         <div class="tab-pane fade" id="postagensTema" role="tabpanel" aria-labelledby="nav-postagensTema-tab">
 
+            <div class="row d-flex justify-content-center mt-5 mb5">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" class="form-control borda" id="titulo" placeholder="Digite o tema que deseja pesquisar" [(ngModel)]="descricaoTema" (keyup)="findByDescricaoTema()">
+                    </div>
+                </div>
+
             <div class="card-columns" *ngFor="let list of listaTemas">
-                <div class="card text-center" *ngFor="let item of list.postagem">
+                <div class="card text-center" *ngFor="let item of list.postagem  | orderBy : key : reverse">
                     <div class="card-body">
                         <h5 class="card-title m-0">{{item.titulo}}</h5>
+                        <p class="card-text"><small class="text-muted">{{list.descricao}}</small></p>
                         <p class="card-text mt-3">{{item.texto}}</p>
                         <p class="card-text"><small class="text-muted">{{item.data | date: 'dd/MM/yyyy'}} às {{item.data
                                 | date: 'HH:mm'}}</small></p>
@@ -151,9 +169,9 @@
                 </div>
 
                 <div class="form-group txt">
-                    <label for="texto">Escolha um tema ou <a data-dismiss="modal" routerLink="/tema">cadastre um
-                            novo</a>:</label>
-                    <select [(ngModel)]="idTema" name="tema" id="tema" class="form-control" (change)="findByIdTema">
+                    <label for="texto">Escolha um tema <a data-dismiss="modal" routerLink="/tema">ou cadastre um novo</a>:</label>
+
+                    <select [(ngModel)]="idTema" name="tema" id="tema" class="form-control" (change)="findByIdTema()">
                         <option *ngFor="let item of listaTemas" value="{{item.idTema}}">
                             {{item.descricao}}
                         </option>
@@ -162,8 +180,8 @@
 
             </div>
             <div class="modal-footer txt">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-success" (click)="publicar()"
+                <button type="button" class="btn btn-outline-dark hr mr-4" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-outline-dark hb" (click)="publicar()"
                     data-dismiss="modal">Publicar</button>
             </div>
         </div>

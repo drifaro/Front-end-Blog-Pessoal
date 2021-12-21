@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Postagem } from 'src/app/model/Postagem';
+import { AlertasService } from 'src/app/service/alertas.service';
+import { PostagemService } from 'src/app/service/postagem.service';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-postagem-delete',
@@ -7,9 +12,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostagemDeleteComponent implements OnInit {
 
-  constructor() { }
+  postagem: Postagem = new Postagem()
+  listaPostagens: Postagem[]
+  idPost: number
 
-  ngOnInit(): void {
+  constructor(
+    private postagemService: PostagemService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private alerta: AlertasService
+  ) { }
+
+  ngOnInit(){
+    if(environment.token == ''){
+      this.router.navigate(['/entrar'])
+    }
+
+    this.idPost = this.route.snapshot.params['idPost']
+    this.findByIdPostagem(this.idPost)
   }
+
+  findByIdPostagem(idPost: number){
+    this.postagemService.getByIdPostagem(idPost).subscribe((resp: Postagem) => {
+      this.postagem = resp
+    })
+    }
+
+    apagar(){
+      this.postagemService.deletePostagem(this.idPost).subscribe(() => {
+        this.alerta.showAlertSuccess('Postagem apagada com sucesso!')
+        this.router.navigate(['/tema'])
+      })
+    }
 
 }
